@@ -1,4 +1,4 @@
-package com.aprendiendo.loginscreensmartgreen.screens.graficas
+package com.project.smartgreen.screens.graficas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
