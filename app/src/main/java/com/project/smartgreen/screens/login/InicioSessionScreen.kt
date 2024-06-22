@@ -14,6 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.project.smartgreen.ui.components.InicioSesionButtons
+import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.bgImagen
 
 @Composable

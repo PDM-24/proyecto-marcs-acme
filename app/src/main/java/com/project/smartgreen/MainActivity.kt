@@ -1,5 +1,6 @@
 package com.project.smartgreen
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.project.smartgreen.screens.MainScreen
+import com.project.smartgreen.screens.login.InicioSesionScreen
 import com.project.smartgreen.ui.theme.SmartGreenTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,28 +23,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             SmartGreenTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    MainScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    SmartGreenTheme {
-        Greeting("Android")
+fun DefaultPreview() {
+    SmartGreenTheme{
+        MainScreen()
     }
 }

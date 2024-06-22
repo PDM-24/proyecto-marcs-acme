@@ -17,4 +17,3 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier)
         bgImagen()
     }
 }
-

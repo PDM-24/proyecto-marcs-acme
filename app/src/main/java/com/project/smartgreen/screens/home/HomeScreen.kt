@@ -43,7 +43,7 @@ fun HomeScreen(navController: NavController){
             ) {
 
                 Button(
-                    onClick = {navController.navigate("mensajes") },
+                    onClick = {navController.navigate("mensaje") },
                     modifier = Modifier
                         .size(100.dp)  // Square size
                         .padding(8.dp),
@@ -53,7 +53,7 @@ fun HomeScreen(navController: NavController){
                 }
 
                 Button(
-                    onClick = {navController.navigate("registroc") },
+                    onClick = {navController.navigate("seleccionarc") },
                     modifier = Modifier
                         .size(100.dp)  // Square size
                         .padding(8.dp),

@@ -12,4 +12,3 @@ fun MainScreen(modifier: Modifier = Modifier){
     val navController: NavHostController = rememberNavController()
     NavGraph(navController = navController)
 }
-
