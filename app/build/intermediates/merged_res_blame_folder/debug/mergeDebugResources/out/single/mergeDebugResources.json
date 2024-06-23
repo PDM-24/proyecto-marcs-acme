@@ -1,0 +1,138 @@
+[
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_imagen.png.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/imagen.png"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_profile.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/profile.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/xml_data_extraction_rules.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/xml_backup_rules.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_bgimage.png.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/bgimage.png"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_legumbre.jpg.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/legumbre.jpg"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_camara.png.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/camara.png"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_especias1.jpg.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/especias1.jpg"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_log.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/log.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_logoapp.png.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/logoapp.png"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_add_circle.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/add_circle.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_hortalizas.jpeg.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/hortalizas.jpeg"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_status.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/status.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.project.smartgreen.app-main-6:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_notifications.xml.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/notifications.xml"
+    },
+    {
+        "merged": "com.project.smartgreen.app-debug-4:/drawable_papa.jpg.flat",
+        "source": "com.project.smartgreen.app-main-6:/drawable/papa.jpg"
+    }
+]
