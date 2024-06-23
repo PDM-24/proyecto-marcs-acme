@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.project.smartgreen.screens.MainScreen
-import com.project.smartgreen.screens.login.InicioSesionScreen
+
 import com.project.smartgreen.ui.theme.SmartGreenTheme
 
 class MainActivity : ComponentActivity() {

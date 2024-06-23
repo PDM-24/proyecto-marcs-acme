@@ -9,13 +9,14 @@ import androidx.navigation.compose.composable
 import com.project.smartgreen.screens.bitacora.BitacoraScreen
 import com.project.smartgreen.screens.graficas.GraficasCScreen
 import com.project.smartgreen.screens.home.HomeScreen
-import com.project.smartgreen.screens.login.InicioSesionScreen
-import com.project.smartgreen.screens.login.LoginFormComponent
-import com.project.smartgreen.screens.login.LoginViewModel
-import com.project.smartgreen.screens.login.LoginViewModelFactory
+import com.project.smartgreen.screens.login.AdminLogin
+import com.project.smartgreen.screens.login.SelectionLogin
+import com.project.smartgreen.screens.login.UserLogin
+import com.project.smartgreen.screens.login.UserRegister
 import com.project.smartgreen.screens.mensajes.ComentariosScreen
 import com.project.smartgreen.screens.mensajes.Mensaje1Screen
 import com.project.smartgreen.screens.registro.SeleccionarC
+import com.project.smartgreen.ui.ViewModel.MainViewModel
 import com.project.smartgreen.ui.components.AgregadosScreen
 import com.project.smartgreen.ui.components.ListaScreen
 import com.project.smartgreen.ui.components.RegistroCScreen
@@ -25,12 +26,21 @@ import com.project.smartgreen.ui.components.SeleccionScreen
 import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(viewModel: MainViewModel, navController: NavHostController) {
     val comentariosViewModel: ComentariosViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
-            InicioSesionScreen(navController)
+            SelectionLogin(navController, viewModel)
+        }
+        composable("Userloginn") {
+            UserLogin(navController, viewModel)
+        }
+        composable("UserRegisterr") {
+            UserRegister(navController, viewModel)
+        }
+        composable("AdminLogin") {
+            AdminLogin(navController, viewModel)
         }
         composable("bitacora") {
             BitacoraScreen(navController)
@@ -67,11 +77,6 @@ fun NavGraph(navController: NavHostController) {
         }
         composable("comentarios") {
             ComentariosScreen(navController, comentariosViewModel)
-        }
-        composable("loginuser") {
-            val context = LocalContext.current
-            val viewModel: LoginViewModel = viewModel(factory = LoginViewModelFactory(context))
-            LoginFormComponent(viewModel = viewModel, navController=navController)
         }
     }
 }
