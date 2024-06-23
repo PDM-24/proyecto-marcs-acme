@@ -85,7 +85,7 @@ fun HomeScreen(navController: NavController){
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
                     ElevatedButton(
-                        onClick = {navController.navigate("mensajes") },
+                        onClick = {navController.navigate("mensaje") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),
