@@ -25,8 +25,5 @@ fun Checkbox(label: String, checkedState: MutableState<Boolean>) {
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = label, fontSize = 14.sp)
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 548797a7da2cada0393c57f648c6cdd63e5f6e1b
+
