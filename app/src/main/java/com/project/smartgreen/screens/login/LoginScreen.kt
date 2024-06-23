@@ -16,5 +16,9 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier)
     ) {
         bgImagen()
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 548797a7da2cada0393c57f648c6cdd63e5f6e1b

@@ -1,4 +1,4 @@
-package com.project.smartgreen.screens.features
+package com.project.smartgreen.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,8 +14,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.project.smartgreen.ui.components.Checkbox
-import com.project.smartgreen.ui.components.bgImagen
+
 
 @Composable
 fun AgregadosScreen(navController: NavHostController, modifier: Modifier = Modifier) {

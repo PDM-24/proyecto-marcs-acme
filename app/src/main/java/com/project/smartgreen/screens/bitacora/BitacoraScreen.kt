@@ -13,8 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-
 import com.project.smartgreen.ui.components.bgImagen
+
 
 @Composable
 fun BitacoraScreen(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -55,7 +55,7 @@ fun BitacoraScreen(navController: NavHostController, modifier: Modifier = Modifi
                     }
                     Spacer(modifier = Modifier.height(20.dp))
                     Button(
-                        onClick = { navController.navigate("agregados") },
+                        onClick = { navController.navigate("comentarios") },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25)) // Cambia el color aquí
                     ) {
                         Text(text = "Ver comentarios existentes")

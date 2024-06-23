@@ -30,12 +30,13 @@ import com.project.smartgreen.ui.components.NotificationLogo
 import com.project.smartgreen.ui.components.ProfileLogo
 import com.project.smartgreen.ui.components.StatusLogo
 
+
+
 @Composable
 fun HomeScreen(navController: NavController){
     Box( modifier = Modifier
         .fillMaxSize()){
         bgImagen()
-
         Row(
             modifier = Modifier
                 .fillMaxSize()
@@ -62,6 +63,7 @@ fun HomeScreen(navController: NavController){
                 )
             }
         }
+
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
@@ -201,7 +203,7 @@ fun HomeScreen(navController: NavController){
                     Text("bitacora")
                 }
 
-            }
+
 
         }
 
@@ -212,4 +214,5 @@ fun HomeScreen(navController: NavController){
 
 
 
+}
 }

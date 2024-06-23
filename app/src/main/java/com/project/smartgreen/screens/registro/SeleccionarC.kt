@@ -78,7 +78,7 @@ fun SeleccionarC(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {  },
+                onClick = { navController.navigate("registrocultivo") },
             ) {
                 Text(text = "Siguiente")
             }

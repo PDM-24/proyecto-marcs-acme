@@ -6,22 +6,44 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+<<<<<<< HEAD
 import com.project.smartgreen.screens.SeleccionScreen.SeleccionScreen
 import com.project.smartgreen.screens.bitacora.BitacoraScreen
 import com.project.smartgreen.screens.features.AgregadosScreen
 import com.project.smartgreen.screens.features.ListaScreen
+=======
+import com.project.smartgreen.screens.bitacora.BitacoraScreen
+>>>>>>> 548797a7da2cada0393c57f648c6cdd63e5f6e1b
 import com.project.smartgreen.screens.graficas.GraficasCScreen
 import com.project.smartgreen.screens.home.HomeScreen
 import com.project.smartgreen.screens.login.InicioSesionScreen
 import com.project.smartgreen.screens.login.LoginFormComponent
 import com.project.smartgreen.screens.login.LoginViewModel
 import com.project.smartgreen.screens.login.LoginViewModelFactory
+<<<<<<< HEAD
 import com.project.smartgreen.screens.registro.RegistroCScreen
 import com.project.smartgreen.screens.registro.RegistroScreen
 import com.project.smartgreen.screens.registro.SeleccionarC
 
 @Composable
 fun NavGraph(navController: NavHostController) {
+=======
+import com.project.smartgreen.screens.mensajes.ComentariosScreen
+import com.project.smartgreen.screens.mensajes.Mensaje1Screen
+import com.project.smartgreen.screens.registro.SeleccionarC
+import com.project.smartgreen.ui.components.AgregadosScreen
+import com.project.smartgreen.ui.components.ListaScreen
+import com.project.smartgreen.ui.components.RegistroCScreen
+import com.project.smartgreen.ui.components.RegistroCultivoScreen
+import com.project.smartgreen.ui.components.RegistroScreen
+import com.project.smartgreen.ui.components.SeleccionScreen
+import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
+
+@Composable
+fun NavGraph(navController: NavHostController) {
+    val comentariosViewModel: ComentariosViewModel = viewModel()
+
+>>>>>>> 548797a7da2cada0393c57f648c6cdd63e5f6e1b
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
             InicioSesionScreen(navController)
@@ -33,7 +55,11 @@ fun NavGraph(navController: NavHostController) {
             SeleccionScreen(navController)
         }
         composable("registro") {
+<<<<<<< HEAD
             RegistroScreen(navController)
+=======
+            RegistroScreen(navController, comentariosViewModel)
+>>>>>>> 548797a7da2cada0393c57f648c6cdd63e5f6e1b
         }
         composable("registroc") {
             RegistroCScreen(navController)
@@ -53,6 +79,18 @@ fun NavGraph(navController: NavHostController) {
         composable("seleccionarc") {
             SeleccionarC(navController)
         }
+<<<<<<< HEAD
+=======
+        composable("mensaje") {
+            Mensaje1Screen(navController)
+        }
+        composable("registrocultivo") {
+            RegistroCultivoScreen(navController)
+        }
+        composable("comentarios") {
+            ComentariosScreen(navController, comentariosViewModel)
+        }
+>>>>>>> 548797a7da2cada0393c57f648c6cdd63e5f6e1b
         composable("loginuser") {
             val context = LocalContext.current
             val viewModel: LoginViewModel = viewModel(factory = LoginViewModelFactory(context))
