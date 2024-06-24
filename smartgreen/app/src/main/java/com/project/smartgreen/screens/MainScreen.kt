@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.project.smartgreen.navigation.NavGraph
 
 
+
 @Composable
 fun MainScreen(modifier: Modifier = Modifier, permission: Boolean = false){
     val navController: NavHostController = rememberNavController()

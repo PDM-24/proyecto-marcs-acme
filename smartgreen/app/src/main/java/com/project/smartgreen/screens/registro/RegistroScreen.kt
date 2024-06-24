@@ -1,4 +1,4 @@
-package com.project.smartgreen.ui.components
+ package com.project.smartgreen.ui.components
 
 import android.location.Location
 import android.net.Uri

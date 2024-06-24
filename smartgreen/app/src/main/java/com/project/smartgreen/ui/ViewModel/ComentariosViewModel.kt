@@ -34,7 +34,6 @@ class ComentariosViewModel : ViewModel() {
     }
 
     fun getLocation(context: Context, permission: Boolean) {
-        Log.d("Permission", permission.toString())
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
         viewModelScope.launch {
             _ubicacion.value = getLastLocation(fusedLocationClient)

@@ -89,7 +89,7 @@ fun AdminLogin(navController: NavController, viewModel: MainViewModel) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(
-                    onClick = { navController.navigate("home") },
+                    onClick = { navController.navigate("homeadmin") },
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(containerColor = primaryGreen)
                 ) {

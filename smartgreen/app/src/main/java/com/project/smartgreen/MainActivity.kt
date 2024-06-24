@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat
 import com.project.smartgreen.screens.MainScreen
 import android.Manifest
 import android.location.Location
-import android.util.Log
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.project.smartgreen.ui.theme.SmartGreenTheme
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -72,7 +71,6 @@ suspend fun getLastLocation(fusedLocationClient: FusedLocationProviderClient): L
             }
         }
     } catch (e: Exception) {
-        Log.e("LocationExample", "Error getting location", e)
         null
     }
 }
