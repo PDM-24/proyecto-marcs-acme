@@ -27,10 +27,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.project.smartgreen.ui.ViewModel.MainViewModel
+
 import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.bgImagen
 import com.project.smartgreen.ui.theme.primaryGreen
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 
 @Composable
@@ -90,7 +91,7 @@ fun AdminLogin(navController: NavController, viewModel: MainViewModel) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(
-                    onClick = { navController.navigate("home") },
+                    onClick = { navController.navigate("homeadmin") },
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(containerColor = primaryGreen)
                 ) {

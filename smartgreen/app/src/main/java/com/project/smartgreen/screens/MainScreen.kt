@@ -5,7 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.project.smartgreen.navigation.NavGraph
-import com.project.smartgreen.ui.ViewModel.MainViewModel
+
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 
 @Composable
