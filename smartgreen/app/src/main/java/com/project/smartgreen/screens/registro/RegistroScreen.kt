@@ -1,4 +1,4 @@
-package com.project.smartgreen.ui.components
+ package com.project.smartgreen.ui.components
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult

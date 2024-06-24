@@ -1,4 +1,4 @@
-package com.project.smartgreen.ui.ViewModel
+package com.project.smartgreen.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 
@@ -7,25 +7,6 @@ import androidx.lifecycle.ViewModel
 
 
 class MainViewModel : ViewModel() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
