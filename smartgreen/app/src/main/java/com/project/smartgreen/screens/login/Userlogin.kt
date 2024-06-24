@@ -13,11 +13,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.bgImagen
 import com.project.smartgreen.ui.theme.primaryGreen
-import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 @Composable
 fun UserLogin(navController: NavController, viewModel: MainViewModel) {

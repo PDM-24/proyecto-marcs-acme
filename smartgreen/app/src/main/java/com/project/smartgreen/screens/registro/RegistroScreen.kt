@@ -1,6 +1,8 @@
  package com.project.smartgreen.ui.components
 
+import android.location.Location
 import android.net.Uri
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -15,19 +17,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
+import com.google.android.gms.location.LocationServices
 import com.project.smartgreen.R
+import com.project.smartgreen.getLastLocation
 import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
 import com.project.smartgreen.ui.viewmodel.Registro
 
 @Composable
-fun RegistroScreen(navController: NavHostController, viewModel: ComentariosViewModel, modifier: Modifier = Modifier) {
+fun RegistroScreen(
+    navController: NavHostController,
+    viewModel: ComentariosViewModel,
+    permission: Boolean,
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
     val comentarios = remember { mutableStateOf("") }
-    val ubicacion = remember { mutableStateOf("") }
+    val ubicacion = viewModel.ubicacion.collectAsState()
     val tipoCultivo = remember { mutableStateOf("") }
     val tipoSuelo = remember { mutableStateOf("") }
     val fechaObservacion = remember { mutableStateOf("") }
@@ -37,6 +48,9 @@ fun RegistroScreen(navController: NavHostController, viewModel: ComentariosViewM
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         selectedImageUri = uri
+    }
+    LaunchedEffect(permission) {
+        viewModel.getLocation(context, permission)
     }
 
     Box(
@@ -87,8 +101,9 @@ fun RegistroScreen(navController: NavHostController, viewModel: ComentariosViewM
 
                     Text(text = "Ubicación", fontSize = 14.sp, color = Color.Gray)
                     TextField(
-                        value = ubicacion.value,
-                        onValueChange = { ubicacion.value = it },
+                        enabled = false,
+                        value = ubicacion.value?.latitude.toString() + ", " + ubicacion.value?.longitude.toString(),
+                        onValueChange = { },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(60.dp)
@@ -121,7 +136,11 @@ fun RegistroScreen(navController: NavHostController, viewModel: ComentariosViewM
                     )
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    Text(text = "Hora y fecha de la observación", fontSize = 14.sp, color = Color.Gray)
+                    Text(
+                        text = "Hora y fecha de la observación",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
                     TextField(
                         value = fechaObservacion.value,
                         onValueChange = { fechaObservacion.value = it },
@@ -162,7 +181,7 @@ fun RegistroScreen(navController: NavHostController, viewModel: ComentariosViewM
                         onClick = {
                             val registro = Registro(
                                 comentarios = comentarios.value,
-                                ubicacion = ubicacion.value,
+                                ubicacion = ubicacion.value?.latitude.toString() + ", " + ubicacion.value?.longitude.toString(),
                                 tipoCultivo = tipoCultivo.value,
                                 tipoSuelo = tipoSuelo.value,
                                 fechaObservacion = fechaObservacion.value,

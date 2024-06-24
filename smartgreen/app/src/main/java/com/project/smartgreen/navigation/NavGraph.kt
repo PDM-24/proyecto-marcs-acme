@@ -1,6 +1,7 @@
 package com.project.smartgreen.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -19,9 +20,9 @@ import com.project.smartgreen.screens.login.UserRegister
 import com.project.smartgreen.screens.mensajes.ComentariosScreen
 import com.project.smartgreen.screens.mensajes.Mensaje1Screen
 import com.project.smartgreen.screens.registro.SeleccionarC
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.screens.registro.SeleccionarCAdmin
 import com.project.smartgreen.ui.components.AgregadosScreen
-
 import com.project.smartgreen.ui.components.InformesScreen
 import com.project.smartgreen.ui.components.ListaScreen
 import com.project.smartgreen.ui.components.RegistroCScreen
@@ -30,12 +31,11 @@ import com.project.smartgreen.ui.components.RegistroScreen
 import com.project.smartgreen.ui.components.SeleccionScreen
 import com.project.smartgreen.ui.components.UserAScreen
 import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
-import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 @Composable
-fun NavGraph(viewModel: MainViewModel, navController: NavHostController) {
+fun NavGraph( navController: NavHostController, permision: Boolean = false) {
     val comentariosViewModel: ComentariosViewModel = viewModel()
-
+    val viewModel: MainViewModel = viewModel()
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
             SelectionLogin(navController, viewModel)
@@ -56,10 +56,10 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController) {
             SeleccionScreen(navController)
         }
         composable("registro") {
-            RegistroScreen(navController, comentariosViewModel)
+            RegistroScreen(navController, comentariosViewModel, permision)
         }
         composable("registroc") {
-            RegistroCScreen(navController)
+            RegistroCScreen(navController, permision, modifier = Modifier, comentariosViewModel)
         }
         composable("graficasc") {
             GraficasCScreen(navController)
@@ -85,7 +85,7 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController) {
             Mensaje1Screen(navController)
         }
         composable("registrocultivo") {
-            RegistroCultivoScreen(navController)
+            RegistroCultivoScreen(navController, modifier = Modifier, comentariosViewModel, permision)
         }
         composable("comentarios") {
             ComentariosScreen(navController, comentariosViewModel)
