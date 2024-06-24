@@ -1,7 +1,6 @@
 package com.project.smartgreen.screens.login
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,7 +26,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.project.smartgreen.ui.ViewModel.MainViewModel
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.bgImagen
 import com.project.smartgreen.ui.theme.primaryGreen

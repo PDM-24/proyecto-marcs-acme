@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,11 +23,17 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.project.smartgreen.R
 import com.project.smartgreen.ui.components.bgImagen
+import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
 
 @Composable
-fun RegistroCultivoScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun RegistroCultivoScreen(
+    navController: NavHostController, modifier: Modifier = Modifier,
+    viewModel: ComentariosViewModel,
+    permission: Boolean
+) {
+    val context = LocalContext.current
+    val ubicacion = viewModel.ubicacion.collectAsState()
     val nombre = remember { mutableStateOf("") }
-    val ubicacion = remember { mutableStateOf("") }
     val fechaCultivo = remember { mutableStateOf("") }
     val tipoSuelo = remember { mutableStateOf("") }
     val nombreRepresentante = remember { mutableStateOf("") }
@@ -38,6 +45,9 @@ fun RegistroCultivoScreen(navController: NavHostController, modifier: Modifier =
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         selectedImageUri = uri
+    }
+    LaunchedEffect(permission) {
+        viewModel.getLocation(context, permission)
     }
 
     Box(
@@ -88,8 +98,9 @@ fun RegistroCultivoScreen(navController: NavHostController, modifier: Modifier =
 
                     Text(text = "Ubicación", fontSize = 14.sp, color = Color.Gray)
                     TextField(
-                        value = ubicacion.value,
-                        onValueChange = { ubicacion.value = it },
+                        enabled = false,
+                        value = ubicacion.value?.latitude.toString() + ", " + ubicacion.value?.longitude.toString(),
+                        onValueChange = { },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(60.dp)

@@ -5,11 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.project.smartgreen.navigation.NavGraph
-import com.project.smartgreen.ui.ViewModel.MainViewModel
 
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier){
+fun MainScreen(modifier: Modifier = Modifier, permission: Boolean = false){
     val navController: NavHostController = rememberNavController()
-    NavGraph(viewModel = MainViewModel(), navController = navController)
+    NavGraph( permision = permission, navController = navController)
 }
