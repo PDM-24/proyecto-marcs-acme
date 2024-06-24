@@ -9,7 +9,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8f96566-4e94-4697-9343-22c5d631cc25" name="Changes" comment="" />
+    <list default="true" id="b8f96566-4e94-4697-9343-22c5d631cc25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/controllers/loginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/navigation/NavGraph.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/navigation/NavGraph.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/AdminLogin.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/SelectionLogin.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/UserRegister.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/UserRegister.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/Userlogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/Userlogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/ui/ViewModel/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/ui/ViewModel/MainViewModel.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +70,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Develop",
+    "git-widget-placeholder": "feature/retrofit__implementation__login",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/elsen0rdelanoche/Documents/proyecto-marcs-acme"
   }

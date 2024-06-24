@@ -6,11 +6,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.project.smartgreen.screens.admin.Homeadmin
 import com.project.smartgreen.screens.bitacora.BitacoraScreen
 import com.project.smartgreen.screens.graficas.GraficasCScreen
 import com.project.smartgreen.screens.home.HomeScreen
-import com.project.smartgreen.screens.login.AdminLogin
-import com.project.smartgreen.screens.login.SelectionLogin
+
 import com.project.smartgreen.screens.login.UserLogin
 import com.project.smartgreen.screens.login.UserRegister
 import com.project.smartgreen.screens.mensajes.ComentariosScreen
@@ -29,18 +29,12 @@ import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
 fun NavGraph(viewModel: MainViewModel, navController: NavHostController) {
     val comentariosViewModel: ComentariosViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = "login") {
-        composable("login") {
-            SelectionLogin(navController, viewModel)
-        }
+    NavHost(navController = navController, startDestination = "Userloginn") {
         composable("Userloginn") {
             UserLogin(navController, viewModel)
         }
         composable("UserRegisterr") {
             UserRegister(navController, viewModel)
-        }
-        composable("AdminLogin") {
-            AdminLogin(navController, viewModel)
         }
         composable("bitacora") {
             BitacoraScreen(navController)
@@ -77,6 +71,9 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController) {
         }
         composable("comentarios") {
             ComentariosScreen(navController, comentariosViewModel)
+        }
+        composable("homeadmin") {
+            Homeadmin(navController)
         }
     }
 }
