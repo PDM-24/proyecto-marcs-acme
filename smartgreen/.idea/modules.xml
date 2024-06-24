@@ -7,6 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartGreen.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartGreen.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartGreen.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartGreen.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartGreen.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartGreen.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/smartgreen.SmartGreen.iml" filepath="$PROJECT_DIR$/.idea/modules/smartgreen.SmartGreen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.androidTest~1.iml" filepath="$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.androidTest~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.main~1.iml" filepath="$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.main~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.unitTest~1.iml" filepath="$PROJECT_DIR$/.idea/modules/app/smartgreen.SmartGreen.app.unitTest~1.iml" />
     </modules>
   </component>
 </project>
