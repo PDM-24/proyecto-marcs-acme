@@ -109,7 +109,7 @@ fun HomeScreen(navController: NavController){
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
                     ElevatedButton(
-                        onClick = {navController.navigate("bitacora") },
+                        onClick = {navController.navigate("userscreen") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),

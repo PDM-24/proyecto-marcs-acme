@@ -1,6 +1,5 @@
 package com.project.smartgreen.screens.registro
 
-
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,7 +11,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -31,8 +29,7 @@ fun SeleccionarC(navController: NavController) {
     var selectedOption by remember { mutableStateOf("") }
 
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         imagendefondo()
 
@@ -80,22 +77,20 @@ fun SeleccionarC(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { navController.navigate("registrocultivo") },
+                onClick = {
+                    if (selectedOption.isNotEmpty()) {
+                        navController.navigate("registrocultivo/$selectedOption")
+                    } else {
+                        Toast.makeText(context, "Selecciona una opción", Toast.LENGTH_SHORT).show()
+                    }
+                },
             ) {
                 Text(text = "Siguiente")
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = { navController.navigateUp() }, // Navega hacia atrás en la pila de navegación
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25))
-            ) {
-                Text(text = "Regresar")
             }
         }
     }
 }
+
 
 @Composable
 fun CultivosGrid(onOptionSelected: (String) -> Unit) {
