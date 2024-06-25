@@ -14,7 +14,6 @@ import com.project.smartgreen.screens.graficas.GraficasCScreen
 import com.project.smartgreen.screens.graficas.InformesGraficaScreen
 import com.project.smartgreen.screens.home.HomeAdminScreen
 import com.project.smartgreen.screens.home.HomeScreen
-import com.project.smartgreen.screens.login.SelectionLogin
 import com.project.smartgreen.screens.login.UserLogin
 import com.project.smartgreen.screens.login.UserRegister
 import com.project.smartgreen.screens.mensajes.ComentariosScreen
@@ -37,10 +36,8 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permisi
     val comentariosViewModel: ComentariosViewModel = viewModel()
 
 
-    NavHost(navController = navController, startDestination = "login") {
-        composable("login") {
-            SelectionLogin(navController, viewModel)
-        }
+    NavHost(navController = navController, startDestination = "Userloginn") {
+
         composable("Userloginn") {
             UserLogin(navController, viewModel)
         }
