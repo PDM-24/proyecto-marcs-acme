@@ -29,14 +29,14 @@ import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.NotificationLogo
 import com.project.smartgreen.ui.components.ProfileLogo
 import com.project.smartgreen.ui.components.StatusLogo
-
+import com.project.smartgreen.ui.components.imagendefondo
 
 
 @Composable
 fun HomeAdminScreen(navController: NavController){
     Box( modifier = Modifier
         .fillMaxSize()){
-        bgImagen()
+        imagendefondo()
         Row(
             modifier = Modifier
                 .fillMaxSize()

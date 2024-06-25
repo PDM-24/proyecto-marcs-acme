@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.bgImagen
+import com.project.smartgreen.ui.components.imagendefondo
 import com.project.smartgreen.ui.theme.primaryGreen
 import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.ui.viewmodel.RegisterState
@@ -44,7 +45,7 @@ fun UserRegister(navController: NavController, viewModel: MainViewModel) {
             .background(Color.White),
         contentAlignment = Alignment.Center
     ) {
-        bgImagen()
+        imagendefondo()
 
         Column(
             modifier = Modifier

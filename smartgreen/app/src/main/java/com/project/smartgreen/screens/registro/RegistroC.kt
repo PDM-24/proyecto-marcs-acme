@@ -53,7 +53,7 @@ fun RegistroCScreen(
             .fillMaxSize()
     ) {
         // Imagen de fondo
-        bgImagen()
+        imagendefondo()
 
         Column(
             modifier = Modifier

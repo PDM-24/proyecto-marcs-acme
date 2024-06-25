@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 
 import com.project.smartgreen.R
 import com.project.smartgreen.ui.components.bgImagen
+import com.project.smartgreen.ui.components.imagendefondo
 
 @Composable
 fun SeleccionarCAdmin(navController: NavController) {
@@ -32,7 +33,7 @@ fun SeleccionarCAdmin(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        bgImagen()
+        imagendefondo()
 
         Column(
             modifier = Modifier

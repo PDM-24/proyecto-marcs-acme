@@ -28,7 +28,7 @@ fun AgregadosScreen(navController: NavHostController, modifier: Modifier = Modif
             .fillMaxSize()
     ) {
         // Imagen de fondo
-        bgImagen()
+        imagendefondo()
 
         Column(
             modifier = Modifier.fillMaxSize(),

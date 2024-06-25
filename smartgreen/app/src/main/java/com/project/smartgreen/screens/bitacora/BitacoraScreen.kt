@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.project.smartgreen.ui.components.bgImagen
+import com.project.smartgreen.ui.components.imagendefondo
 
 
 @Composable
@@ -23,7 +24,7 @@ fun BitacoraScreen(navController: NavHostController, modifier: Modifier = Modifi
             .fillMaxSize()
     ) {
         // Imagen de fondo
-        bgImagen()
+        imagendefondo()
 
         Column(
             modifier = Modifier.fillMaxSize(),
