@@ -5,8 +5,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.project.smartgreen.screens.Users.UserScreen
 import com.project.smartgreen.screens.admin.Homeadmin
 import com.project.smartgreen.screens.bitacora.BitacoraScreen
 import com.project.smartgreen.screens.graficas.GraficasAdminScreen
@@ -34,7 +37,6 @@ import com.project.smartgreen.ui.viewmodel.MainViewModel
 @Composable
 fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permision: Boolean = false) {
     val comentariosViewModel: ComentariosViewModel = viewModel()
-
 
     NavHost(navController = navController, startDestination = "Userloginn") {
 
@@ -77,8 +79,12 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permisi
         composable("mensaje") {
             Mensaje1Screen(navController)
         }
-        composable("registrocultivo") {
-            RegistroCultivoScreen(navController, modifier = Modifier, comentariosViewModel, permision)
+        composable(
+            "registrocultivo/{tipoCultivo}",
+            arguments = listOf(navArgument("tipoCultivo") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val tipoCultivo = backStackEntry.arguments?.getString("tipoCultivo")
+            RegistroCultivoScreen(navController, tipoCultivo, modifier = Modifier, comentariosViewModel, permision)
         }
         composable("comentarios") {
             ComentariosScreen(navController, comentariosViewModel)
@@ -98,5 +104,13 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permisi
         composable("informesgrafica") {
             InformesGraficaScreen(navController)
         }
-    }
+
+        composable("userscreen") {
+            UserScreen(navController, comentariosViewModel)
+        }
+
+
+
+}
+
 }

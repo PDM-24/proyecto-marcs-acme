@@ -27,7 +27,12 @@ import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
 
 @Composable
 fun RegistroCultivoScreen(
-    navController: NavHostController, modifier: Modifier = Modifier,
+
+
+
+    navController: NavHostController,
+    tipoCultivo: String?,
+    modifier: Modifier = Modifier,
     viewModel: ComentariosViewModel,
     permission: Boolean
 ) {
@@ -37,8 +42,6 @@ fun RegistroCultivoScreen(
     val fechaCultivo = remember { mutableStateOf("") }
     val tipoSuelo = remember { mutableStateOf("") }
     val nombreRepresentante = remember { mutableStateOf("") }
-
-
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
 
     val launcher = rememberLauncherForActivityResult(
@@ -51,10 +54,8 @@ fun RegistroCultivoScreen(
     }
 
     Box(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
-        // Imagen de fondo
         imagendefondo()
 
         Column(
@@ -74,7 +75,7 @@ fun RegistroCultivoScreen(
                         clip = true
                     }
                     .background(Color.White.copy(alpha = 0.8f))
-                    .padding(16.dp), // Añadir relleno alrededor del Box para más espacio
+                    .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Column(
@@ -109,6 +110,9 @@ fun RegistroCultivoScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    Text(text = "Tipo de Cultivo: $tipoCultivo", fontSize = 14.sp, color = Color.Gray)
+                    Spacer(modifier = Modifier.height(8.dp))
+
                     Text(text = "Fecha Cultivo", fontSize = 14.sp, color = Color.Gray)
                     TextField(
                         value = fechaCultivo.value,
@@ -119,7 +123,6 @@ fun RegistroCultivoScreen(
                             .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
                             .padding(4.dp)
                     )
-
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(text = "Tipo de suelo", fontSize = 14.sp, color = Color.Gray)
@@ -132,7 +135,6 @@ fun RegistroCultivoScreen(
                             .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
                             .padding(4.dp)
                     )
-
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(text = "Nombre Representante", fontSize = 14.sp, color = Color.Gray)
@@ -145,8 +147,6 @@ fun RegistroCultivoScreen(
                             .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
                             .padding(4.dp)
                     )
-
-
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(text = "Añadir imagen", fontSize = 14.sp, color = Color.Gray)
@@ -162,7 +162,6 @@ fun RegistroCultivoScreen(
                             contentDescription = "añadir imagen"
                         )
                     }
-
                     selectedImageUri?.let { uri ->
                         Spacer(modifier = Modifier.height(8.dp))
                         Image(
@@ -171,7 +170,6 @@ fun RegistroCultivoScreen(
                             modifier = Modifier.size(200.dp)
                         )
                     }
-
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Button(
@@ -180,17 +178,7 @@ fun RegistroCultivoScreen(
                     ) {
                         Text(text = "Añadir Cultivo")
                     }
-
-                    Spacer(modifier = Modifier.height(20.dp))
-
-                    Button(
-                        onClick = { navController.navigateUp() }, // Navega hacia atrás en la pila de navegación
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25))
-                    ) {
-                        Text(text = "Regresar")
-                    }
                 }
             }
-        }
-    }
-}
+            }
+}}
