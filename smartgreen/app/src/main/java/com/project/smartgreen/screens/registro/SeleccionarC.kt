@@ -1,6 +1,5 @@
 package com.project.smartgreen.screens.registro
 
-
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,8 +29,7 @@ fun SeleccionarC(navController: NavController) {
     var selectedOption by remember { mutableStateOf("") }
 
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         imagendefondo()
 
@@ -79,13 +77,20 @@ fun SeleccionarC(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { navController.navigate("registrocultivo") },
+                onClick = {
+                    if (selectedOption.isNotEmpty()) {
+                        navController.navigate("registrocultivo/$selectedOption")
+                    } else {
+                        Toast.makeText(context, "Selecciona una opción", Toast.LENGTH_SHORT).show()
+                    }
+                },
             ) {
                 Text(text = "Siguiente")
             }
         }
     }
 }
+
 
 @Composable
 fun CultivosGrid(onOptionSelected: (String) -> Unit) {

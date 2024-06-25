@@ -163,19 +163,31 @@ fun GraficasCScreen(navController: NavHostController, modifier: Modifier = Modif
                 ColorLegend(color = Color(0xFF174D25), label = "Excelente estado")
                 ColorLegend(color = Color.Red, label = "En peligro")
                 ColorLegend(color = Color.Yellow, label = "Casi en peligro")
+
+
+                Button(onClick = {
+                    navController.currentBackStackEntry?.savedStateHandle?.set("estadoSustrato", estadoSustrato)
+                    navController.currentBackStackEntry?.savedStateHandle?.set("nivelResequedad", nivelResequedad)
+                    navController.currentBackStackEntry?.savedStateHandle?.set("calidadAire", calidadAire)
+                    navController.currentBackStackEntry?.savedStateHandle?.set("luzRecibida", luzRecibida)
+                    navController.navigate("mensaje")
+                }) {
+                    Text("Ver alerta")
+                }
+
+
+                Button(
+                    onClick = { navController.navigateUp() }, // Navega hacia atrás en la pila de navegación
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25))
+                ) {
+                    Text(text = "Regresar")
+                }
+
+
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {
-                navController.currentBackStackEntry?.savedStateHandle?.set("estadoSustrato", estadoSustrato)
-                navController.currentBackStackEntry?.savedStateHandle?.set("nivelResequedad", nivelResequedad)
-                navController.currentBackStackEntry?.savedStateHandle?.set("calidadAire", calidadAire)
-                navController.currentBackStackEntry?.savedStateHandle?.set("luzRecibida", luzRecibida)
-                navController.navigate("mensaje")
-            }) {
-                Text("Ver alerta")
-            }
         }
     }
 }
