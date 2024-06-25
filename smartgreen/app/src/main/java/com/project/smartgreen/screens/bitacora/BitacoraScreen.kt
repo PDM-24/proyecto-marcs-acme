@@ -49,7 +49,7 @@ fun BitacoraScreen(navController: NavHostController, modifier: Modifier = Modifi
                     Text(text = "Bitacora")
                     Spacer(modifier = Modifier.height(20.dp))
                     Button(
-                        onClick = { navController.navigate("seleccion") },
+                        onClick = { navController.navigate("registro") },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25)) // Color verde esmeralda
                     ) {
                         Text(text = "Registrar nuevos comentarios")

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.project.smartgreen.data.model.Crop
+import com.project.smartgreen.ui.components.imagendefondo
 import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -21,6 +22,7 @@ fun ShowCropsScreen(navController: NavHostController, viewModel: MainViewModel) 
     // Llamar a getCrops para obtener los cultivos al cargar la pantalla
     viewModel.getCrops()
     val cropsState by viewModel.cropsState.collectAsState()
+
 
     Scaffold(
         topBar = {
@@ -34,6 +36,7 @@ fun ShowCropsScreen(navController: NavHostController, viewModel: MainViewModel) 
             )
         },
         content = { paddingValues ->
+            imagendefondo()
             LazyColumn(
                 contentPadding = paddingValues,
                 modifier = Modifier

@@ -1,87 +1,93 @@
-package com.project.smartgreen.screens.mensajes
+package com.project.smartgreen.screens.features
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.compose.ui.text.style.TextAlign
-import coil.compose.rememberAsyncImagePainter
-import com.project.smartgreen.ui.components.Logo
-import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
-import com.project.smartgreen.ui.viewmodel.Registro
+import com.project.smartgreen.data.model.Comment
+import com.project.smartgreen.ui.components.imagendefondo
+import com.project.smartgreen.ui.viewmodel.CommentState
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ComentariosScreen(navController: NavHostController, viewModel: ComentariosViewModel) {
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
-        ) {
-            Spacer(modifier = Modifier.height(50.dp))
-            Logo()
-            Spacer(modifier = Modifier.height(20.dp))
+fun ShowCommentsScreen(navController: NavHostController, viewModel: MainViewModel) {
+    LaunchedEffect(Unit) {
+        viewModel.getComments()
+    }
+    val commentsState by viewModel.commentsState.collectAsState()
 
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top
-            ) {
-                items(viewModel.registros) { registro ->
-                    Column(
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Comentarios") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
+        },
+        content = { paddingValues ->
+            when (val state = commentsState) {
+                is CommentState.Loaded -> {
+
+                    imagendefondo()
+                    LazyColumn(
+                        contentPadding = paddingValues,
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        Text(
-                            text = "Comentarios: ${registro.comentarios}",
-                            fontSize = 16.sp,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "Ubicación: ${registro.ubicacion}",
-                            fontSize = 16.sp,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "Tipo de Cultivo: ${registro.tipoCultivo}",
-                            fontSize = 16.sp,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "Tipo de Suelo: ${registro.tipoSuelo}",
-                            fontSize = 16.sp,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "Fecha de Observación: ${registro.fechaObservacion}",
-                            fontSize = 16.sp,
-                            color = Color.Black
-                        )
-                        registro.imagenUri?.let { uri ->
-                            Image(
-                                painter = rememberAsyncImagePainter(uri),
-                                contentDescription = null,
-                                modifier = Modifier.size(200.dp)
-                            )
+                        items(state.comments) { comment ->
+                            CommentCard(comment)
                         }
                     }
                 }
+                is CommentState.Error -> {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = state.message, color = MaterialTheme.colorScheme.error)
+                    }
+                }
+                is CommentState.Idle, is CommentState.Success -> {
+                    // Do nothing
+                }
+
+                CommentState.Loading -> TODO()
             }
+        }
+    )
+}
+
+@Composable
+fun CommentCard(comment: Comment) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(text = "Comentario: ${comment.comment}", style = MaterialTheme.typography.titleMedium)
+            Text(text = "Ubicación: ${comment.location}", style = MaterialTheme.typography.bodyMedium)
+            Text(text = "Tipo de Cultivo: ${comment.cropType}", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Tipo de Suelo: ${comment.soilType}", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Fecha de Observación: ${comment.observationDateTime}", style = MaterialTheme.typography.bodySmall)
         }
     }
 }

@@ -13,6 +13,7 @@ import com.project.smartgreen.screens.RegistroCultivo
 import com.project.smartgreen.screens.Users.UserScreen
 import com.project.smartgreen.screens.admin.Homeadmin
 import com.project.smartgreen.screens.bitacora.BitacoraScreen
+import com.project.smartgreen.screens.features.ShowCommentsScreen
 import com.project.smartgreen.screens.features.ShowCropsScreen
 
 import com.project.smartgreen.screens.graficas.GraficasAdminScreen
@@ -22,7 +23,7 @@ import com.project.smartgreen.screens.home.HomeAdminScreen
 import com.project.smartgreen.screens.home.HomeScreen
 import com.project.smartgreen.screens.login.UserLogin
 import com.project.smartgreen.screens.login.UserRegister
-import com.project.smartgreen.screens.mensajes.ComentariosScreen
+
 import com.project.smartgreen.screens.mensajes.Mensaje1Screen
 import com.project.smartgreen.screens.registro.SeleccionarC
 import com.project.smartgreen.screens.registro.SeleccionarCAdmin
@@ -56,7 +57,7 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permisi
             SeleccionScreen(navController)
         }
         composable("registro") {
-            RegistroScreen(navController, comentariosViewModel, permision)
+            RegistroScreen(navController, viewModel)
         }
         composable("registroc") {
             RegistroCScreen(navController, permision, modifier = Modifier, comentariosViewModel)
@@ -86,7 +87,7 @@ fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permisi
             RegistroCultivo(navController, viewModel)
         }
         composable("comentarios") {
-            ComentariosScreen(navController, comentariosViewModel)
+            ShowCommentsScreen(navController, viewModel )
         }
         composable("useradmin") {
             UserAScreen(navController, comentariosViewModel)

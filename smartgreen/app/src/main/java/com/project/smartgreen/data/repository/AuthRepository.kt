@@ -21,4 +21,13 @@ class AuthRepository(private val authService: AuthService) {
     suspend fun addCrop(token: String, crop: Crop): Response<Crop> {
         return authService.addCrop("Bearer $token", crop)
     }
+
+    suspend fun addComment(token: String, comment: Comment): Response<Unit> {
+        return authService.addComment("Bearer $token", comment)
+    }
+
+    suspend fun getComments(token: String): Response<List<Comment>> {
+        return authService.getComments("Bearer $token")
+    }
+
 }

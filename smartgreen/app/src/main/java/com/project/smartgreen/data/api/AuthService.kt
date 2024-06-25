@@ -26,6 +26,18 @@ interface AuthService {
     ): Response<Crop>
 
 
+    @POST("comments/add")
+    suspend fun addComment(
+        @Header("Authorization") token: String,
+        @Body comment: Comment
+    ): Response<Unit>
+
+    @GET("comments/get")
+    suspend fun getComments(
+        @Header("Authorization") token: String
+    ): Response<List<Comment>>
+
+
 
 
 

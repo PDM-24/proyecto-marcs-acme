@@ -1,201 +1,113 @@
- package com.project.smartgreen.ui.components
+package com.project.smartgreen.ui.components
 
+import android.Manifest
+import android.content.Context
 import android.location.Location
-import android.net.Uri
-import android.util.Log
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import android.location.LocationManager
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
-import coil.compose.rememberAsyncImagePainter
-import com.google.android.gms.location.LocationServices
-import com.project.smartgreen.R
-import com.project.smartgreen.getLastLocation
-import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
-import com.project.smartgreen.ui.viewmodel.Registro
+import com.project.smartgreen.data.model.Comment
+import com.project.smartgreen.ui.viewmodel.MainViewModel
+import kotlinx.coroutines.launch
 
 @Composable
-fun RegistroScreen(
-    navController: NavHostController,
-    viewModel: ComentariosViewModel,
-    permission: Boolean,
-    modifier: Modifier = Modifier
-) {
+fun RegistroScreen(navController: NavHostController, viewModel: MainViewModel) {
     val context = LocalContext.current
-    val comentarios = remember { mutableStateOf("") }
-    val ubicacion = viewModel.ubicacion.collectAsState()
-    val tipoCultivo = remember { mutableStateOf("") }
-    val tipoSuelo = remember { mutableStateOf("") }
-    val fechaObservacion = remember { mutableStateOf("") }
-    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
+    var comment by remember { mutableStateOf("") }
+    var location by remember { mutableStateOf("") }
+    var cropType by remember { mutableStateOf("") }
+    var soilType by remember { mutableStateOf("") }
+    var observationDateTime by remember { mutableStateOf("") }
 
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        selectedImageUri = uri
-    }
-    LaunchedEffect(permission) {
-        viewModel.getLocation(context, permission)
-    }
+    val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    val isGpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+    val isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-    ) {
-        // Imagen de fondo
-        imagendefondo()
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Box(
-                modifier = Modifier
-                    .width(300.dp)
-                    .graphicsLayer {
-                        shadowElevation = 8.dp.toPx()
-                        shape = RoundedCornerShape(16.dp)
-                        clip = true
-                    }
-                    .background(Color.White.copy(alpha = 0.8f))
-                    .padding(16.dp), // Añadir relleno alrededor del Box para más espacio
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(text = "Comentarios", fontSize = 14.sp, color = Color.Gray)
-                    TextField(
-                        value = comentarios.value,
-                        onValueChange = { comentarios.value = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
-                            .padding(4.dp)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(text = "Ubicación", fontSize = 14.sp, color = Color.Gray)
-                    TextField(
-                        enabled = false,
-                        value = ubicacion.value?.latitude.toString() + ", " + ubicacion.value?.longitude.toString(),
-                        onValueChange = { },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
-                            .padding(4.dp)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(text = "Tipo de cultivo", fontSize = 14.sp, color = Color.Gray)
-                    TextField(
-                        value = tipoCultivo.value,
-                        onValueChange = { tipoCultivo.value = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
-                            .padding(4.dp)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(text = "Tipo de suelo", fontSize = 14.sp, color = Color.Gray)
-                    TextField(
-                        value = tipoSuelo.value,
-                        onValueChange = { tipoSuelo.value = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
-                            .padding(4.dp)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Hora y fecha de la observación",
-                        fontSize = 14.sp,
-                        color = Color.Gray
-                    )
-                    TextField(
-                        value = fechaObservacion.value,
-                        onValueChange = { fechaObservacion.value = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
-                            .padding(4.dp)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(text = "Añadir imagen", fontSize = 14.sp, color = Color.Gray)
-                    Spacer(modifier = Modifier.height(8.dp))
-                    IconButton(
-                        onClick = {
-                            launcher.launch("image/*")
-                        },
-                        modifier = Modifier.size(48.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.camara),
-                            contentDescription = "añadir imagen"
-                        )
-                    }
-
-                    selectedImageUri?.let { uri ->
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Image(
-                            painter = rememberAsyncImagePainter(uri),
-                            contentDescription = null,
-                            modifier = Modifier.size(200.dp)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Button(
-                        onClick = {
-                            val registro = Registro(
-                                comentarios = comentarios.value,
-                                ubicacion = ubicacion.value?.latitude.toString() + ", " + ubicacion.value?.longitude.toString(),
-                                tipoCultivo = tipoCultivo.value,
-                                tipoSuelo = tipoSuelo.value,
-                                fechaObservacion = fechaObservacion.value,
-                                imagenUri = selectedImageUri?.toString()
-                            )
-                            viewModel.addRegistro(registro)
-                            navController.navigate("comentarios")
-                        },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25))
-                    ) {
-                        Text(text = "Añadir Registro")
-                    }
+    LaunchedEffect(Unit) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            val locationListener = object : android.location.LocationListener {
+                override fun onLocationChanged(loc: Location) {
+                    location = "${loc.latitude}, ${loc.longitude}"
                 }
+                override fun onStatusChanged(provider: String?, status: Int, extras: android.os.Bundle?) {}
+                override fun onProviderEnabled(provider: String) {}
+                override fun onProviderDisabled(provider: String) {}
             }
+            if (isGpsEnabled) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, locationListener)
+            } else if (isNetworkEnabled) {
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
+            }
+        }
+    }
+
+    imagendefondo()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        OutlinedTextField(
+            value = comment,
+            onValueChange = { comment = it },
+            label = { Text("Comentario") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = location,
+            onValueChange = { location = it },
+            label = { Text("Ubicación") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = false
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = cropType,
+            onValueChange = { cropType = it },
+            label = { Text("Tipo de Cultivo") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = soilType,
+            onValueChange = { soilType = it },
+            label = { Text("Tipo de Suelo") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = observationDateTime,
+            onValueChange = { observationDateTime = it },
+            label = { Text("Fecha de Observación") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(
+            onClick = {
+                val newComment = Comment(
+                    comment = comment,
+                    location = location,
+                    cropType = cropType,
+                    soilType = soilType,
+                    observationDateTime = observationDateTime
+                )
+                viewModel.addComment(newComment)
+                navController.navigate("home")
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25))
+        ) {
+            Text("Agregar Comentario")
         }
     }
 }

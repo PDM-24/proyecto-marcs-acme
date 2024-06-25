@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.project.smartgreen.data.model.Comment
 import com.project.smartgreen.data.model.Crop
 import com.project.smartgreen.data.repository.AuthRepository
 import com.project.smartgreen.utils.PreferenceHelper
@@ -21,7 +22,11 @@ class MainViewModel(private val repository: AuthRepository,private val context: 
     val registerState: StateFlow<RegisterState> get() = _registerState
 
     private val _cropsState = MutableStateFlow<List<Crop>>(emptyList())
+
+    private val _commentsState = MutableStateFlow<CommentState>(CommentState.Idle)
     val cropsState: StateFlow<List<Crop>> get() = _cropsState
+
+    val commentsState: StateFlow<CommentState> get() = _commentsState
 
     private val _addCropState = MutableStateFlow<AddCropState>(AddCropState.Idle)
     val addCropState: StateFlow<AddCropState> get() = _addCropState
@@ -141,6 +146,61 @@ class MainViewModel(private val repository: AuthRepository,private val context: 
         }
     }
 
+    fun addComment(comment: Comment) {
+        viewModelScope.launch {
+            token?.let {
+                _commentsState.value = CommentState.Loading
+                try {
+                    val response = repository.addComment(it, comment)
+                    if (response.isSuccessful) {
+                        _commentsState.value = CommentState.Success
+                        getComments()
+                        _commentsState.value = CommentState.Idle // Volver a estado Idle después de actualizar los comentarios
+                        Log.i("MainViewModel", "Comment added successfully")
+                    } else {
+                        Log.i("MainViewModel", "Error adding comment: ${response.message()}")
+                        _commentsState.value = CommentState.Error(response.message())
+                    }
+                } catch (e: Exception) {
+                    Log.i("MainViewModel", "Exception adding comment: ${e.message}")
+                    _commentsState.value = CommentState.Error("Network error")
+                }
+            } ?: run {
+                Log.i("MainViewModel", "Token is null, cannot add comment")
+                _commentsState.value = CommentState.Error("Token is null")
+            }
+        }
+    }
+
+    fun getComments() {
+        viewModelScope.launch {
+            token?.let {
+                Log.i("MainViewModel", "Getting comments with token: $it")
+                try {
+                    val response = repository.getComments(it)
+                    if (response.isSuccessful) {
+                        val comments = response.body() ?: emptyList()
+                        Log.i("MainViewModel", "Comments obtained: $comments")
+                        _commentsState.value = CommentState.Loaded(comments)
+                    } else {
+                        Log.i("MainViewModel", "Error getting comments: ${response.message()}")
+                        _commentsState.value = CommentState.Error(response.message())
+                    }
+                } catch (e: Exception) {
+                    Log.i("MainViewModel", "Exception getting comments: ${e.message}")
+                    _commentsState.value = CommentState.Error("Network error")
+                }
+            } ?: run {
+                Log.i("MainViewModel", "Token is null, cannot get comments")
+                _commentsState.value = CommentState.Error("Token is null")
+            }
+        }
+    }
+
+    fun clearCommentState() {
+        _commentsState.value = CommentState.Idle
+    }
+
     fun logout() {
         token = null
         _loginState.value = LoginState.Idle
@@ -181,4 +241,12 @@ sealed class AddCropState {
     object Loading : AddCropState()
     object Success : AddCropState()
     data class Error(val message: String) : AddCropState()
+}
+
+sealed class CommentState {
+    object Idle : CommentState()
+    object Loading : CommentState()
+    object Success : CommentState()
+    data class Error(val message: String) : CommentState()
+    data class Loaded(val comments: List<Comment>) : CommentState()
 }
