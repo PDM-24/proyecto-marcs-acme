@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const GranjaSchema = new mongoose.Schema({
+const CropSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -14,6 +14,10 @@ const GranjaSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    location: {
+        type: String, // Latitud y longitud en un string
+        required: true
+    },
     notes: {
         type: String
     }
@@ -21,4 +25,4 @@ const GranjaSchema = new mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Crop', GranjaSchema);
+module.exports = mongoose.model('Crop', CropSchema);
