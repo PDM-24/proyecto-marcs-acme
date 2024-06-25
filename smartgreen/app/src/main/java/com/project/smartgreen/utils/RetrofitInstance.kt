@@ -7,7 +7,7 @@ import com.project.smartgreen.data.api.AuthService
 
 object RetrofitInstance {
 
-    private const val BASE_URL = "api.smartgreen.works"
+    private const val BASE_URL = "https://api.smartgreen.works"
 
 
     private val retrofit by lazy {
