@@ -14,9 +14,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.ui.components.Logo
-import com.project.smartgreen.ui.components.bgImagen
+import com.project.smartgreen.ui.components.imagendefondo
+
+import com.project.smartgreen.ui.viewmodel.MainViewModel
+
+
 import com.project.smartgreen.ui.theme.primaryGreen
 import com.project.smartgreen.ui.viewmodel.LoginState
 
@@ -43,11 +46,15 @@ fun UserLogin(navController: NavController, viewModel: MainViewModel) {
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
+            .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        bgImagen()
+
+
+        Log.i("UserLogin", "Calling bgImagen")
+        imagendefondo()
+
+
 
         Column(
             modifier = Modifier
@@ -56,6 +63,8 @@ fun UserLogin(navController: NavController, viewModel: MainViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Logo()
+
+
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -138,7 +147,7 @@ fun UserLogin(navController: NavController, viewModel: MainViewModel) {
                     text = "¿No tienes cuenta? Regístrate",
                     color = primaryGreen,
                     modifier = Modifier.clickable {
-                        navController.navigate("UserRegister")
+                        navController.navigate("UserRegisterr")
                     }
                 )
             }

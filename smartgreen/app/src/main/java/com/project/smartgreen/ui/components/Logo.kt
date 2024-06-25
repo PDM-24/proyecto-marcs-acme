@@ -1,5 +1,6 @@
 package com.project.smartgreen.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.size
 
 @Composable
 fun Logo(modifier: Modifier = Modifier) {
+    Log.i("logoimagen", "logo function called")
     val logoPainter = painterResource(id = R.drawable.logoapp)
     Image(
         painter = logoPainter,

@@ -29,7 +29,7 @@ fun UserRegister(navController: NavController, viewModel: MainViewModel) {
     LaunchedEffect(registerState) {
         when (registerState) {
             is RegisterState.Success -> {
-                navController.navigate("login")
+                navController.navigate("Userloginn")
             }
             is RegisterState.Error -> {
                 // Show error message
@@ -102,7 +102,7 @@ fun UserRegister(navController: NavController, viewModel: MainViewModel) {
                     text = "¿Ya tienes cuenta? Inicia sesión",
                     color = primaryGreen,
                     modifier = Modifier.clickable {
-                        navController.navigate("login")
+                        navController.navigate("Userloginn")
                     }
                 )
             }

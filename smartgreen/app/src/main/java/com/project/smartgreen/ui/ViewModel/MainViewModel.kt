@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.project.smartgreen.data.repository.AuthRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ class MainViewModel(private val repository: AuthRepository) : ViewModel() {
     val registerState: StateFlow<RegisterState> get() = _registerState
 
     fun login(username: String, password: String, role: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _loginState.value = LoginState.Loading
             try {
                 Log.i("MainViewModel", "Attempting login with username: $username, password: $password, role: $role")
@@ -28,7 +29,7 @@ class MainViewModel(private val repository: AuthRepository) : ViewModel() {
                     if (role == "user") {
                         _loginState.value = LoginState.Success(token, "home")
                     } else if (role == "admin") {
-                        _loginState.value = LoginState.Success(token, "home")
+                        _loginState.value = LoginState.Success(token, "homeadmin")
                     }
                 } else {
                     val errorMessage = response.message()
@@ -46,13 +47,19 @@ class MainViewModel(private val repository: AuthRepository) : ViewModel() {
         viewModelScope.launch {
             _registerState.value = RegisterState.Loading
             try {
+                Log.i("MainViewModel", "Attempting registration with username: $username, password: $password")
                 val response = repository.register(username, password)
+                Log.i("MainViewModel", "Response: $response")
                 if (response.isSuccessful) {
+                    Log.i("MainViewModel", "Registration successful.")
                     _registerState.value = RegisterState.Success
                 } else {
-                    _registerState.value = RegisterState.Error(response.message())
+                    val errorMessage = response.message()
+                    Log.i("MainViewModel", "Registration failed. Error: $errorMessage")
+                    _registerState.value = RegisterState.Error(errorMessage)
                 }
             } catch (e: Exception) {
+                Log.i("MainViewModel", "Registration exception: ${e.message}")
                 _registerState.value = RegisterState.Error("Network error")
             }
         }
