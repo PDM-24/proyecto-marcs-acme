@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f96566-4e94-4697-9343-22c5d631cc25" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../backend/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/controllers/loginController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -21,6 +22,17 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/SelectionLogin.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/UserRegister.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/UserRegister.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/Userlogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/Userlogin.kt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/navigation/NavGraph.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/navigation/NavGraph.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/AdminLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/AdminLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/SelectionLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/SelectionLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/UserRegister.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/UserRegister.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/Userlogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/login/Userlogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/registro/RegistroScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/screens/registro/RegistroScreen.kt" afterDir="false" />
+>>>>>>> Develop
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/ui/ViewModel/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/smartgreen/ui/ViewModel/MainViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,11 +43,53 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/elsen0rdelanoche/.android/avd/Pixel_3a_API_35.avd)]" />
+<<<<<<< HEAD
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=PJE68P9HPVIFVKXC)]" />
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=Default, isTemplate=false, identifier=serial=emulator-5554;connection=a1439dba)]" />
+>>>>>>> a16e2060539d3baa20fcdfecc34eb77d42bb85e0
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SmartGreen" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SmartGreen" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SmartGreen" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SmartGreen" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,6 +115,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/ubication&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Alejandra Serrano/New folder&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
+  }
+}</component>
+=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Android App.app.executor": "Run",
@@ -70,11 +149,24 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+<<<<<<< HEAD
     "git-widget-placeholder": "feature/retrofit__implementation__login",
+=======
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "Feat/Admin",
+>>>>>>> Develop
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/elsen0rdelanoche/Documents/proyecto-marcs-acme"
+    "last_opened_file_path": "C:/Users/XD/Documents/proyecto-marcs-acme/smartgreen",
+    "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\XD\Documents\proyecto-marcs-acme\smartgreen\app\src\main\res\drawable" />
+      <recent name="C:\Users\XD\Documents\proyecto-marcs-acme\smartgreen\app\src\main\java\com\project\smartgreen\screens\home" />
+    </key>
+  </component>
+>>>>>>> a16e2060539d3baa20fcdfecc34eb77d42bb85e0
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="SmartGreen.app.main" />

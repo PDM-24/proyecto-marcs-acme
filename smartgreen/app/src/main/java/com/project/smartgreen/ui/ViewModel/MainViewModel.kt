@@ -1,11 +1,9 @@
-package com.project.smartgreen.ui.ViewModel
+package com.project.smartgreen.ui.viewmodel
 
 import android.util.Log
-import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.project.smartgreen.data.repository.AuthRepository
-import com.project.smartgreen.data.model.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

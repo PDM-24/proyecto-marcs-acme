@@ -14,11 +14,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.project.smartgreen.ui.ViewModel.LoginState
-import com.project.smartgreen.ui.ViewModel.MainViewModel
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.bgImagen
 import com.project.smartgreen.ui.theme.primaryGreen
+import com.project.smartgreen.ui.viewmodel.LoginState
 
 @Composable
 fun UserLogin(navController: NavController, viewModel: MainViewModel) {
@@ -90,7 +90,6 @@ fun UserLogin(navController: NavController, viewModel: MainViewModel) {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -126,8 +125,7 @@ fun UserLogin(navController: NavController, viewModel: MainViewModel) {
                     onClick = {
                         Log.i("UserLogin", "Login button clicked with username: $username and role: $role")
                         viewModel.login(username, password, role)
-
-                              },
+                    },
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(containerColor = primaryGreen)
                 ) {

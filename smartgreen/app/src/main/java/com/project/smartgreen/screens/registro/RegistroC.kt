@@ -1,6 +1,7 @@
 package com.project.smartgreen.ui.components
 
 
+import android.location.Location
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -18,14 +19,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import com.google.android.gms.location.LocationServices
+import com.project.smartgreen.getLastLocation
+import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegistroCScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun RegistroCScreen(
+    navController: NavHostController, permission: Boolean, modifier: Modifier = Modifier,
+    viewModel: ComentariosViewModel
+) {
+    val context = LocalContext.current
     val comentarios = remember { mutableStateOf("") }
-    val ubicacion = remember { mutableStateOf("") }
+    val ubicacion = remember { mutableStateOf<Location?>(null) }
     val tipoSuelo = remember { mutableStateOf("") }
     val fechaObservacion = remember { mutableStateOf("") }
     val tipoCultivo = remember { mutableStateOf("") }
@@ -33,6 +43,10 @@ fun RegistroCScreen(navController: NavHostController, modifier: Modifier = Modif
     val Cultivo = listOf("Cultivo 1", "Cultivo 2", "Cultivo 3")
     var selectedCultivo by remember { mutableStateOf("") }
     var expandedCultivo by remember { mutableStateOf(false) }
+
+    LaunchedEffect(permission) {
+        viewModel.getLocation(context, permission)
+    }
 
     Box(
         modifier = modifier
@@ -119,13 +133,15 @@ fun RegistroCScreen(navController: NavHostController, modifier: Modifier = Modif
 
                     Text(text = "Ubicación", fontSize = 14.sp, color = Color.Gray)
                     TextField(
-                        value = ubicacion.value,
-                        onValueChange = { ubicacion.value = it },
+                        enabled = false,
+                        value = ubicacion.value?.latitude.toString() + ", " + ubicacion.value?.longitude.toString(),
+                        onValueChange = { },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(60.dp)
                             .background(Color(0xFFEDE7F6), RoundedCornerShape(8.dp))
                             .padding(4.dp)
+
                     )
                     Spacer(modifier = Modifier.height(8.dp))
 
@@ -153,7 +169,11 @@ fun RegistroCScreen(navController: NavHostController, modifier: Modifier = Modif
                     )
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    Text(text = "Hora y fecha de la observación", fontSize = 14.sp, color = Color.Gray)
+                    Text(
+                        text = "Hora y fecha de la observación",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
                     TextField(
                         value = fechaObservacion.value,
                         onValueChange = { fechaObservacion.value = it },
