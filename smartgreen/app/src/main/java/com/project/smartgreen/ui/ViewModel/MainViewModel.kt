@@ -1,31 +1,58 @@
 package com.project.smartgreen.ui.viewmodel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.project.smartgreen.data.model.Crop
 import com.project.smartgreen.data.repository.AuthRepository
+import com.project.smartgreen.utils.PreferenceHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: AuthRepository) : ViewModel() {
+
+class MainViewModel(private val repository: AuthRepository,private val context: Context) : ViewModel() {
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
     val loginState: StateFlow<LoginState> get() = _loginState
 
     private val _registerState = MutableStateFlow<RegisterState>(RegisterState.Idle)
     val registerState: StateFlow<RegisterState> get() = _registerState
 
+    private val _cropsState = MutableStateFlow<List<Crop>>(emptyList())
+    val cropsState: StateFlow<List<Crop>> get() = _cropsState
+
+    private val _addCropState = MutableStateFlow<AddCropState>(AddCropState.Idle)
+    val addCropState: StateFlow<AddCropState> get() = _addCropState
+
+    private var token: String? = null
+
+    init {
+        token = PreferenceHelper.getToken(context)
+        Log.i("MainViewModel", "Token initialized: $token")
+    }
+
+
+
     fun login(username: String, password: String, role: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _loginState.value = LoginState.Loading
             try {
                 Log.i("MainViewModel", "Attempting login with username: $username, password: $password, role: $role")
+
                 val response = repository.login(username, password, role)
                 Log.i("MainViewModel", response.toString())
                 if (response.isSuccessful) {
                     val token = response.body()?.token ?: ""
                     Log.i("MainViewModel", "Login successful. Token: $token")
+
+                    PreferenceHelper.saveToken(context, token)
+                    this@MainViewModel.token = token
+                    Log.i("MainViewModel", "Token saved in preferences.")
+
+                    _cropsState.value = emptyList()
+
                     if (role == "user") {
                         _loginState.value = LoginState.Success(token, "home")
                     } else if (role == "admin") {
@@ -64,6 +91,75 @@ class MainViewModel(private val repository: AuthRepository) : ViewModel() {
             }
         }
     }
+
+    fun getCrops() {
+        viewModelScope.launch {
+            token?.let {
+                Log.i("MainViewModel", "Getting crops with token: $it")
+                try {
+                    val response = repository.getCrops(it)
+                    if (response.isSuccessful) {
+                        val crops = response.body() ?: emptyList()
+                        Log.i("MainViewModel", "Crops obtained: $crops")
+                        _cropsState.value = crops
+                    } else {
+                        Log.i("MainViewModel", "Error getting crops: ${response.message()}")
+                    }
+                } catch (e: Exception) {
+                    Log.i("MainViewModel", "Exception getting crops: ${e.message}")
+                }
+            } ?: run {
+                Log.i("MainViewModel", "Token is null, cannot get crops")
+            }
+        }
+    }
+
+    fun addCrop(crop: Crop) {
+        viewModelScope.launch {
+            token?.let {
+                _addCropState.value = AddCropState.Loading
+                try {
+                    val response = repository.addCrop(it, crop)
+                    if (response.isSuccessful) {
+                        _addCropState.value = AddCropState.Success
+                        getCrops()
+                        _addCropState.value = AddCropState.Idle// Actualizar la lista de cultivos
+                    } else {
+                        Log.i("MainViewModel", "Error adding crop: ${response.message()}")
+                        Log.i("MainViewModel", "Response code: ${response.code()}")
+                        Log.i("MainViewModel", "Response body: ${response.errorBody()?.string()}")
+                        _addCropState.value = AddCropState.Error(response.message())
+                    }
+                } catch (e: Exception) {
+                    Log.i("MainViewModel", "Exception adding crop: ${e.message}")
+                    _addCropState.value = AddCropState.Error("Network error")
+                }
+            } ?: run {
+                Log.i("MainViewModel", "Token is null, cannot add crop")
+                _addCropState.value = AddCropState.Error("Token is null")
+            }
+        }
+    }
+
+    fun logout() {
+        token = null
+        _loginState.value = LoginState.Idle
+        _cropsState.value = emptyList() // Limpiar los cultivos al cerrar sesión
+        PreferenceHelper.clearToken(context) // Limpiar el token de las preferencias
+        Log.i("MainViewModel", "Token cleared and user logged out")
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 sealed class LoginState {
@@ -78,4 +174,11 @@ sealed class RegisterState {
     object Loading : RegisterState()
     object Success : RegisterState()
     data class Error(val message: String) : RegisterState()
+}
+
+sealed class AddCropState {
+    object Idle : AddCropState()
+    object Loading : AddCropState()
+    object Success : AddCropState()
+    data class Error(val message: String) : AddCropState()
 }

@@ -21,8 +21,15 @@ import androidx.core.content.ContextCompat
 import com.project.smartgreen.screens.MainScreen
 import android.Manifest
 import android.location.Location
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.project.smartgreen.data.repository.AuthRepository
+import com.project.smartgreen.navigation.NavGraph
+
 import com.project.smartgreen.ui.theme.SmartGreenTheme
+import com.project.smartgreen.ui.viewmodel.MainViewModel
+import com.project.smartgreen.utils.RetrofitInstance
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -47,9 +54,12 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
+            val authService = RetrofitInstance.authService
+            val authRepository = AuthRepository(authService)
             SmartGreenTheme {
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding))
+                    MainScreen(authRepository = authRepository,modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -72,12 +82,5 @@ suspend fun getLastLocation(fusedLocationClient: FusedLocationProviderClient): L
         }
     } catch (e: Exception) {
         null
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    SmartGreenTheme{
-        MainScreen()
     }
 }

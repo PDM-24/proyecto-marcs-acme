@@ -57,3 +57,13 @@ fun ProfileLogo(modifier: Modifier = Modifier){
         modifier = Modifier.size(300.dp) // Tamaño del logo
     )
 }
+
+@Composable
+fun ViewCrop(modifier: Modifier = Modifier){
+    val logoPainter = painterResource(id = R.drawable.legumbre)
+    Image(
+        painter = logoPainter, // ID de tu logo en drawable
+        contentDescription = "profileLogo",
+        modifier = Modifier.size(300.dp) // Tamaño del logo
+    )
+}

@@ -4,6 +4,7 @@ package com.project.smartgreen.screens.home
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
@@ -29,13 +31,17 @@ import com.project.smartgreen.ui.components.Logo
 import com.project.smartgreen.ui.components.NotificationLogo
 import com.project.smartgreen.ui.components.ProfileLogo
 import com.project.smartgreen.ui.components.StatusLogo
+import com.project.smartgreen.ui.components.ViewCrop
 import com.project.smartgreen.ui.components.imagendefondo
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 
 @Composable
-fun HomeScreen(navController: NavController){
-    Box( modifier = Modifier
-        .fillMaxSize()){
+fun HomeScreen(navController: NavController, viewModel: MainViewModel) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
         imagendefondo()
         Row(
             modifier = Modifier
@@ -44,12 +50,15 @@ fun HomeScreen(navController: NavController){
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.Top
         ) {
-            Spacer(modifier = Modifier
-                .height(20.dp))
+            Spacer(
+                modifier = Modifier
+                    .height(20.dp)
+            )
             // Logo de la app
-            Box(modifier = Modifier
-                .size(150.dp)
-                ){
+            Box(
+                modifier = Modifier
+                    .size(150.dp)
+            ) {
                 Logo(modifier = Modifier.size(150.dp))
             }
             Column(
@@ -64,33 +73,34 @@ fun HomeScreen(navController: NavController){
             }
         }
 
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-        ){
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(140.dp),
-                    //.padding(24.dp),
+                //.padding(24.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
 
                 Column(
                     modifier = Modifier
-                    .height(140.dp),
+                        .height(140.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     ElevatedButton(
-                        onClick = {navController.navigate("mensaje") },
+                        onClick = { navController.navigate("mensaje") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),
                         shape = MaterialTheme.shapes.medium,  // Rounded corners
-                                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.green)),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.green)),
                         elevation = ButtonDefaults.elevatedButtonElevation(
                             defaultElevation = 6.dp, // Elevación por defecto
                             pressedElevation = 10.dp, // Elevación cuando el botón es presionado
@@ -101,15 +111,38 @@ fun HomeScreen(navController: NavController){
                     }
                     Text("Notificaciones")
                 }
+                Column(
+                    modifier = Modifier
+                        .height(140.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    ElevatedButton(
+                        onClick = { navController.navigate("showcrops") },
+                        modifier = Modifier
+                            .size(100.dp)  // Square size
+                            .padding(8.dp),
+                        shape = MaterialTheme.shapes.medium, // Rounded corners
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.green)),
+                        elevation = ButtonDefaults.elevatedButtonElevation(
+                            defaultElevation = 6.dp, // Elevación por defecto
+                            pressedElevation = 10.dp, // Elevación cuando el botón es presionado
+                            disabledElevation = 0.dp // Elevación cuando el botón está deshabilitado
+                        ),
+                    ) {
+                        ViewCrop(modifier = Modifier.size(300.dp))
+                    }
+                    Text("Cultivos")
+                }
 
                 Column(
                     modifier = Modifier
                         .height(140.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     ElevatedButton(
-                        onClick = {navController.navigate("userscreen") },
+                        onClick = { navController.navigate("userscreen") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),
@@ -130,7 +163,7 @@ fun HomeScreen(navController: NavController){
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                    //.padding(8.dp),
+                //.padding(8.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Column(
@@ -138,9 +171,9 @@ fun HomeScreen(navController: NavController){
                         .height(140.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     ElevatedButton(
-                        onClick = {navController.navigate("graficasc") },
+                        onClick = { navController.navigate("graficasc") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),
@@ -161,9 +194,9 @@ fun HomeScreen(navController: NavController){
                         .height(140.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     ElevatedButton(
-                        onClick = {navController.navigate("seleccionarc") },
+                        onClick = { navController.navigate("registrocultivo") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),
@@ -184,9 +217,9 @@ fun HomeScreen(navController: NavController){
                         .height(140.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     ElevatedButton(
-                        onClick = {navController.navigate("bitacora") },
+                        onClick = { navController.navigate("bitacora") },
                         modifier = Modifier
                             .size(100.dp)  // Square size
                             .padding(8.dp),
@@ -205,14 +238,36 @@ fun HomeScreen(navController: NavController){
 
 
 
+
+            }
+
+
         }
 
 
 
+        Button(
+            onClick = {
+                viewModel.logout()
+                navController.navigate("Userloginn") {
+                    popUpTo("Userloginn") { inclusive = true }
+                }
+            },
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.green))
+        ) {
+            Text(text = "Cerrar sesión")
+        }
 
     }
 
 
 
-}
+
+
+
+
+
 }

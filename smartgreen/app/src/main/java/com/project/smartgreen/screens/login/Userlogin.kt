@@ -35,6 +35,7 @@ fun UserLogin(navController: NavController, viewModel: MainViewModel) {
     LaunchedEffect(loginState) {
         when (loginState) {
             is LoginState.Success -> {
+                viewModel.getCrops()
                 navController.navigate((loginState as LoginState.Success).screen)
             }
             is LoginState.Error -> {
