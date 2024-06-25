@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import com.project.smartgreen.data.api.AuthService
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://192.168.1.13:3000/api/"
+    private const val BASE_URL = "http://192.168.0.10:3000/api/"
 
     private val retrofit by lazy {
         Retrofit.Builder()

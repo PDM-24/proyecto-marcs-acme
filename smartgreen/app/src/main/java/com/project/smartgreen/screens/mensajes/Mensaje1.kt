@@ -49,6 +49,14 @@ fun Mensaje1Screen(navController: NavHostController) {
                     color = Color.Black,
                     textAlign = TextAlign.Center
                 )
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Button(
+                    onClick = { navController.navigateUp() }, // Navega hacia atrás en la pila de navegación
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF174D25))
+                ) {
+                    Text(text = "Regresar")
+                }
             }
         }
     }
