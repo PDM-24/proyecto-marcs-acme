@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.compose.runtime:runtime-saveable-android:1.7.0-alpha02@aar" external-system-id="GRADLE">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../New folder/caches/transforms-4/e1826ff01bfbe0d175764c83cc02bd1c/transformed/runtime-saveable-release/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../New folder/caches/transforms-4/e1826ff01bfbe0d175764c83cc02bd1c/transformed/runtime-saveable-release/AndroidManifest.xml" />
-      <root url="file://$PROJECT_DIR$/../../../New folder/caches/transforms-4/e1826ff01bfbe0d175764c83cc02bd1c/transformed/runtime-saveable-release/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-4/e1826ff01bfbe0d175764c83cc02bd1c/transformed/runtime-saveable-release/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-4/e1826ff01bfbe0d175764c83cc02bd1c/transformed/runtime-saveable-release/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-4/e1826ff01bfbe0d175764c83cc02bd1c/transformed/runtime-saveable-release/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../New folder/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-saveable-android/1.7.0-alpha02/f4b8bdb1cd75cb3c61bc1a3996fe6eff4382e836/runtime-saveable-android-1.7.0-alpha02-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-saveable-android/1.7.0-alpha02/f4b8bdb1cd75cb3c61bc1a3996fe6eff4382e836/runtime-saveable-android-1.7.0-alpha02-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

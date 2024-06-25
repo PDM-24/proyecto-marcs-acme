@@ -7,20 +7,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.project.smartgreen.screens.admin.Homeadmin
 import com.project.smartgreen.screens.bitacora.BitacoraScreen
 import com.project.smartgreen.screens.graficas.GraficasAdminScreen
 import com.project.smartgreen.screens.graficas.GraficasCScreen
 import com.project.smartgreen.screens.graficas.InformesGraficaScreen
 import com.project.smartgreen.screens.home.HomeAdminScreen
 import com.project.smartgreen.screens.home.HomeScreen
-import com.project.smartgreen.screens.login.AdminLogin
-import com.project.smartgreen.screens.login.SelectionLogin
 import com.project.smartgreen.screens.login.UserLogin
 import com.project.smartgreen.screens.login.UserRegister
 import com.project.smartgreen.screens.mensajes.ComentariosScreen
 import com.project.smartgreen.screens.mensajes.Mensaje1Screen
 import com.project.smartgreen.screens.registro.SeleccionarC
-import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.screens.registro.SeleccionarCAdmin
 import com.project.smartgreen.ui.components.AgregadosScreen
 import com.project.smartgreen.ui.components.InformesScreen
@@ -31,23 +29,20 @@ import com.project.smartgreen.ui.components.RegistroScreen
 import com.project.smartgreen.ui.components.SeleccionScreen
 import com.project.smartgreen.ui.components.UserAScreen
 import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 @Composable
-fun NavGraph( navController: NavHostController, permision: Boolean = false) {
+fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permision: Boolean = false) {
     val comentariosViewModel: ComentariosViewModel = viewModel()
-    val viewModel: MainViewModel = viewModel()
-    NavHost(navController = navController, startDestination = "login") {
-        composable("login") {
-            SelectionLogin(navController, viewModel)
-        }
+
+
+    NavHost(navController = navController, startDestination = "Userloginn") {
+
         composable("Userloginn") {
             UserLogin(navController, viewModel)
         }
         composable("UserRegisterr") {
             UserRegister(navController, viewModel)
-        }
-        composable("AdminLogin") {
-            AdminLogin(navController, viewModel)
         }
         composable("bitacora") {
             BitacoraScreen(navController)
@@ -73,11 +68,9 @@ fun NavGraph( navController: NavHostController, permision: Boolean = false) {
         composable("home") {
             HomeScreen(navController)
         }
-
         composable("homeadmin") {
             HomeAdminScreen(navController)
         }
-
         composable("seleccionarc") {
             SeleccionarC(navController)
         }
@@ -90,23 +83,18 @@ fun NavGraph( navController: NavHostController, permision: Boolean = false) {
         composable("comentarios") {
             ComentariosScreen(navController, comentariosViewModel)
         }
-
         composable("useradmin") {
             UserAScreen(navController, comentariosViewModel)
         }
-
         composable("seleccionarcadmin") {
             SeleccionarCAdmin(navController)
         }
-
         composable("graficasadmin") {
             GraficasAdminScreen(navController)
         }
-
         composable("informes") {
             InformesScreen(navController, comentariosViewModel)
         }
-
         composable("informesgrafica") {
             InformesGraficaScreen(navController)
         }
