@@ -15,7 +15,15 @@ const CropSchema = new mongoose.Schema({
         required: true
     },
     location: {
-        type: String, // Latitud y longitud en un string
+        type: String,
+        required: true
+    },
+    soilType: {
+        type: String,
+        required: true
+    },
+    cropType: {
+        type: String,
         required: true
     },
     notes: {

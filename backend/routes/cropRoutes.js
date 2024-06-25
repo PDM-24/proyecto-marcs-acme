@@ -7,6 +7,6 @@ router.get('/get', authenticateToken, getCrops);
 router.get('/:id', authenticateToken, getCropById);
 router.post('/add', authenticateToken, addCrop);
 router.put('/:id', authenticateToken, updateCrop);
-router.delete('/:id', authenticateToken, deleteCrop);
+router.delete('/delete/:id', authenticateToken, deleteCrop);
 
 module.exports = router;
