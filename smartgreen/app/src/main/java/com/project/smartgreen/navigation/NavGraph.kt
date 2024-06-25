@@ -20,7 +20,6 @@ import com.project.smartgreen.screens.login.UserRegister
 import com.project.smartgreen.screens.mensajes.ComentariosScreen
 import com.project.smartgreen.screens.mensajes.Mensaje1Screen
 import com.project.smartgreen.screens.registro.SeleccionarC
-import com.project.smartgreen.ui.viewmodel.MainViewModel
 import com.project.smartgreen.screens.registro.SeleccionarCAdmin
 import com.project.smartgreen.ui.components.AgregadosScreen
 import com.project.smartgreen.ui.components.InformesScreen
@@ -31,11 +30,12 @@ import com.project.smartgreen.ui.components.RegistroScreen
 import com.project.smartgreen.ui.components.SeleccionScreen
 import com.project.smartgreen.ui.components.UserAScreen
 import com.project.smartgreen.ui.viewmodel.ComentariosViewModel
+import com.project.smartgreen.ui.viewmodel.MainViewModel
 
 @Composable
-fun NavGraph(viewModel: MainViewModel,navController: NavHostController, permision: Boolean = false) {
+fun NavGraph(viewModel: MainViewModel, navController: NavHostController, permision: Boolean = false) {
     val comentariosViewModel: ComentariosViewModel = viewModel()
-    val viewModel: MainViewModel = viewModel()
+
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
