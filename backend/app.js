@@ -7,8 +7,8 @@ const cropRoutes = require('./routes/cropRoutes');
 const sensorDataRoutes = require('./routes/sensorRoutes');
 const pestLogRoutes = require('./routes/pestRoutes');
 const loginRoutes = require('./routes/loginRoutes');
+const commentRoutes = require('./routes/commentRoutes');
 require('dotenv').config(); 
-
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,6 +24,7 @@ app.use('/api/crops', cropRoutes);
 app.use('/api/sensor-data', sensorDataRoutes);
 app.use('/api/pest-logs', pestLogRoutes);
 app.use('/api', loginRoutes);
+app.use('/api/comments', commentRoutes); // Añadir las rutas de comentarios
 
 app.listen(port, () => {
     console.log(`SmartGreen API listening at http://localhost:${port}`);
